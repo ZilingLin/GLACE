@@ -20,7 +20,8 @@ def generate_graph_PageRank_matrix(PageRank_matrix, path, window_size):
 
     return PageRank_matrix
 
-def make_graph_M(G):
+def make_graph_M(A):
+    G = nx.from_scipy_sparse_matrix(A)
     N = len(list(G.nodes()))
     # build adj matrix
     M = np.zeros([N, N], dtype = np.float)
@@ -30,9 +31,7 @@ def make_graph_M(G):
     walks = node2vec_G.simulate_walks(10, 80) # (FLAGS.num_walks, FLAGS.walk_length)
     M = generate_graph_PageRank_matrix(M, walks, 10) # window_size
 
-    new_G = nx.from_numpy_matrix(M)
-
-    return new_G
+    return M
 
 
 

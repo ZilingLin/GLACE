@@ -29,8 +29,7 @@ class DataUtils:
 
             # self.g = nx.from_scipy_sparse_matrix(self.A)
 
-            G = nx.from_scipy_sparse_matrix(self.A)
-            self.g = make_graph_M(G)
+            self.g = nx.from_numpy_matrix(make_graph_M(G))
 
             self.num_of_nodes = self.g.number_of_nodes()
             self.num_of_edges = self.g.number_of_edges()
