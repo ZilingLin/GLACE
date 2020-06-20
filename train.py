@@ -12,12 +12,12 @@ def main():
     parser.add_argument('name', default='cora_ml')
     parser.add_argument('model', default='glace', help='lace or glace')
     parser.add_argument('--suf', default='')
-    parser.add_argument('--proximity', default='first-order', help='first-order or second-order')
+    parser.add_argument('--proximity', default='second-order', help='first-order or second-order')
     parser.add_argument('--embedding_dim', type=int, default=64)
     parser.add_argument('--batch_size', type=int, default=128)
     parser.add_argument('--K', type=int, default=5)
     parser.add_argument('--learning_rate', default=0.001)
-    parser.add_argument('--num_batches', type=int, default=100000)
+    parser.add_argument('--num_batches', type=int, default=4000)
     parser.add_argument('--is_all', default=False)  # train with all edges; no validation or test set
     args = parser.parse_args()
     args.is_all = True if args.is_all == 'True' else False

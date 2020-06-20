@@ -182,6 +182,7 @@ class GLACE:
 
         ij_kl = 0.5 * (trace_fac + mu_diff_sq - self.L - log_det)
 
+        '''
         sigma_ratio = sigma_i / sigma_j
         trace_fac = tf.reduce_sum(sigma_ratio, 1)
         log_det = tf.reduce_sum(tf.log(sigma_ratio + 1e-14), 1)
@@ -191,5 +192,7 @@ class GLACE:
         ji_kl = 0.5 * (trace_fac + mu_diff_sq - self.L - log_det)
 
         kl_distance = 0.5 * (ij_kl + ji_kl)
+        '''
+        kl_distance = ij_kl
 
         return kl_distance

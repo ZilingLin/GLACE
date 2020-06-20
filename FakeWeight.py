@@ -28,10 +28,12 @@ def make_graph_M(A):
     # Perform random walks to generate graph context
     node2vec_G = node2vec.Graph(G, False, 1, 1) # FLAGS.directed, FLAGS.p, FLAGS.q)
     node2vec_G.preprocess_transition_probs()
-    walks = node2vec_G.simulate_walks(10, 80) # (FLAGS.num_walks, FLAGS.walk_length)
-    M = generate_graph_PageRank_matrix(M, walks, 10) # window_size
+    walks = node2vec_G.simulate_walks(30, 8) # (FLAGS.num_walks, FLAGS.walk_length)
+    M = generate_graph_PageRank_matrix(M, walks, 2) # window_size
+    M1 = np.zeros([N, N], dtype = np.float)
+    M1 = generate_graph_PageRank_matrix(M1, walks, 4)
 
-    return M
+    return M1
 
 
 
