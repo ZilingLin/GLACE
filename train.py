@@ -25,7 +25,7 @@ def main():
 
 
 def train(args):
-    graph_file = '/Users/bhagya/PycharmProjects/Old data/line-master data/%s/%s.npz' % (args.name, args.name)
+    graph_file = 'data/%s/%s.npz' % (args.name, args.name)
     graph_file = graph_file.replace('.npz', '_train.npz') if not args.is_all else graph_file
     data_loader = DataUtils(graph_file, args.is_all)
 
