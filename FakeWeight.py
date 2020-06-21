@@ -13,10 +13,12 @@ def generate_graph_PageRank_matrix(PageRank_matrix, path, window_size):
                 else:
                     PageRank_matrix[path[k][i]][path[k][j]] += 1
 
+    '''
     s = np.sum(PageRank_matrix, axis=1)
     # Attention here
     s[s == 0] = 1
     PageRank_matrix /= s[:, None]
+    '''
 
     return PageRank_matrix
 

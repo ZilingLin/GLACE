@@ -12,7 +12,7 @@ def main():
     parser.add_argument('name', default='cora_ml')
     parser.add_argument('model', default='glace', help='lace or glace')
     parser.add_argument('--suf', default='')
-    parser.add_argument('--proximity', default='second-order', help='first-order or second-order')
+    parser.add_argument('--proximity', default='first-order', help='first-order or second-order')
     parser.add_argument('--embedding_dim', type=int, default=64)
     parser.add_argument('--batch_size', type=int, default=128)
     parser.add_argument('--K', type=int, default=5)
