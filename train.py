@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('name', default='citeseer')
     parser.add_argument('model', default='glace', help='lace or glace')
-    parser.add_argument('--M', default='1', help='0:M or 1:adj_matrix')
+    parser.add_argument('--M', type=int,  default='1', help='0:M or 1:adj_matrix')
     parser.add_argument('--suf', default='')
     parser.add_argument('--proximity', default='first-order', help='first-order or second-order')
     parser.add_argument('--embedding_dim', type=int, default=64)
