@@ -9,8 +9,9 @@ import scipy.sparse as sp
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('name', default='cora_ml')
+    parser.add_argument('name', default='citeseer')
     parser.add_argument('model', default='glace', help='lace or glace')
+    parser.add_argument('--M', default='1', help='0:M or 1:adj_matrix')
     parser.add_argument('--suf', default='')
     parser.add_argument('--proximity', default='first-order', help='first-order or second-order')
     parser.add_argument('--embedding_dim', type=int, default=64)
@@ -27,7 +28,7 @@ def main():
 def train(args):
     graph_file = 'data/%s/%s.npz' % (args.name, args.name)
     graph_file = graph_file.replace('.npz', '_train.npz') if not args.is_all else graph_file
-    data_loader = DataUtils(graph_file, args.is_all)
+    data_loader = DataUtils(graph_file, is_all=args.is_all, M=args.M)
 
     suffix = args.proximity
     args.X = data_loader.X if args.suf != 'oh' else sp.identity(data_loader.X.shape[0])

@@ -7,7 +7,7 @@ from FakeWeight import make_graph_M
 
 
 class DataUtils:
-    def __init__(self, graph_file, is_all=False):
+    def __init__(self, graph_file, is_all=False, M=1):
         with np.load(graph_file, allow_pickle=True) as loader:
             loader = dict(loader)
             self.A = sp.csr_matrix((loader['adj_data'], loader['adj_indices'],
@@ -27,9 +27,12 @@ class DataUtils:
                 self.test_edges = loader['test_edges']
                 self.test_ground_truth = loader['test_ground_truth']
 
-            # self.g = nx.from_scipy_sparse_matrix(self.A)
-
-            self.g = nx.from_numpy_matrix(make_graph_M(self.A))
+            if M == 1:
+                print('using adj_matrix')
+                self.g = nx.from_scipy_sparse_matrix(self.A)
+            else:
+                print('using M')
+                self.g = nx.from_numpy_matrix(make_graph_M(self.A))
 
             self.num_of_nodes = self.g.number_of_nodes()
             self.num_of_edges = self.g.number_of_edges()

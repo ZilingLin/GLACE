@@ -13,7 +13,7 @@ def main():
 
 
 def split(args):
-    graph_file = 'data/%s/%s.npz' % (args.name, args.name)
+    graph_file = '../graph2gauss/data/%s.npz' % (args.name)
     A, X, labels, val_edges, val_ground_truth, test_edges, test_ground_truth = train_val_test_split(graph_file, p_val=args.p_val, p_test=args.p_test)
     np.savez('data/%s/%s_train.npz' % (args.name, args.name), adj_data=A.data, adj_indices=A.indices,
              adj_indptr=A.indptr, adj_shape=A.shape, attr_data=X.data, attr_indices=X.indices,
